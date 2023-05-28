@@ -6,9 +6,7 @@ export default function App() {
       source={require("./assets/background.jpeg")}
       style={styles.backgroundImage}
     >
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
+      <View style={styles.container}>{/* Rest of app to go in here */}</View>
     </ImageBackground>
   );
 }
