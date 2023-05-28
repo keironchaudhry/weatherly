@@ -1,7 +1,7 @@
 import { StyleSheet, TextInput, View, ImageBackground } from "react-native";
 
 export default function App() {
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=$location&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}`;
 
   return (
     <ImageBackground
@@ -13,6 +13,7 @@ export default function App() {
         <View style={styles.search}>
           <TextInput style={styles.input} placeholder="Enter location" />
         </View>
+        <View>{/* Results */}</View>
       </View>
     </ImageBackground>
   );
@@ -33,8 +34,9 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   input: {
+    marginTop: 30,
     paddingVertical: 7,
-    paddingHorizontal: 15,
+    paddingHorizontal: 35,
     fontSize: 16,
     borderRadius: 25,
     borderWidth: 1,
