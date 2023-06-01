@@ -1,7 +1,36 @@
-import { StyleSheet, TextInput, View, ImageBackground } from "react-native";
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  TextInput,
+  Keyboard,
+  Text,
+  View,
+  ImageBackground,
+} from "react-native";
+
+import axios from "axios";
 
 export default function App() {
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=$location&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}`;
+  const APIKey = a293bc6acc6834526730bb1203942cec;
+  const [data, setData] = useState({});
+  const [location, setLocation] = useState("");
+
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${APIKey}`;
+
+  const searchLocation = (event) => {
+    axios.get(url).then((response) => {
+      setData(response.data);
+      console.log(response);
+    });
+    setLocation("");
+    Keyboard.dismiss();
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.nativeEvent.key === "Enter") {
+      searchLocation();
+    }
+  };
 
   return (
     <ImageBackground
@@ -11,9 +40,26 @@ export default function App() {
       <View style={styles.container}>
         {/* Search Filter */}
         <View style={styles.search}>
-          <TextInput style={styles.input} placeholder="Enter location" />
+          <TextInput
+            style={styles.input}
+            placeholder="Enter location"
+            value={location}
+            onChangeText={setLocation}
+            onSubmitEditing={searchLocation}
+            onKeyPress={handleKeyPress}
+          />
         </View>
-        <View>{/* Results */}</View>
+        <View>
+          <View className="top">
+            <View className="location">
+              <Text>{data.name}</Text>
+            </View>
+            <View className="temp">{/* data temp */}</View>
+            <View className="description">
+              {/* data weather description */}
+            </View>
+          </View>
+        </View>
       </View>
     </ImageBackground>
   );
