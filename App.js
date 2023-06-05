@@ -111,4 +111,14 @@ const styles = StyleSheet.create({
     marginTop: "auto",
     marginBottom: "auto",
   },
+  bottom: {
+    display: 'flex',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    width: '100%',
+    marginVertical: '2rem',
+    padding: '1rem',
+    borderRadius: 12,
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+  },
 });
