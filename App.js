@@ -51,11 +51,13 @@ export default function App() {
         <View>
           <View className="top">
             <View className="location">
-              <Text>{data.name}</Text>
+              <Text>Madrid</Text>
             </View>
-            <View className="temp">{/* data temp */}</View>
+            <View className="temp">
+              <Text>25 degrees C</Text>
+            </View>
             <View className="description">
-              {/* data weather description */}
+              <Text>Cloudy</Text>
             </View>
           </View>
         </View>
@@ -88,5 +90,11 @@ const styles = StyleSheet.create({
     borderColor: "rgba(255, 255, 255, 0.8)",
     backgroundColor: "rgba(255, 255, 255, 0.1)",
     color: "#f8f8f8",
+  },
+  top: {
+    width: "100%",
+    margin: 16,
+    marginTop: "auto",
+    marginBottom: "auto",
   },
 });
