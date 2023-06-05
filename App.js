@@ -60,6 +60,20 @@ export default function App() {
               <Text>Cloudy</Text>
             </View>
           </View>
+          <View className="bottom">
+            <View className="feels">
+              <Text className="bold">30°C</Text>
+              <Text className="paragraph-font-size">Feels like</Text>
+            </View>
+            <View className="humidity">
+              <Text className="bold">49%</Text>
+              <Text className="paragraph-font-size">Humidity</Text>
+            </View>
+            <View className="wind">
+              <Text className="bold">5 mph</Text>
+              <Text className="paragraph-font-size">Wind Speed</Text>
+            </View>
+          </View>
         </View>
       </View>
     </ImageBackground>
