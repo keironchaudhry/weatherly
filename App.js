@@ -49,7 +49,7 @@ export default function App() {
           />
         </View>
         <View>
-          <View className="top">
+          <View style={styles.top}>
             <View className="location">
               <Text>Madrid</Text>
             </View>
@@ -60,7 +60,7 @@ export default function App() {
               <Text>Cloudy</Text>
             </View>
           </View>
-          <View className="bottom">
+          <View style={styles.bottom}>
             <View className="feels">
               <Text className="bold">30°C</Text>
               <Text className="paragraph-font-size">Feels like</Text>
@@ -108,17 +108,19 @@ const styles = StyleSheet.create({
   top: {
     width: "100%",
     margin: 16,
-    marginTop: "auto",
-    marginBottom: "auto",
+    // marginTop: "auto",
+    // marginBottom: "auto",
   },
   bottom: {
-    display: 'flex',
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
-    width: '100%',
-    marginVertical: '2rem',
-    padding: '1rem',
+    display: "flexbox",
+    textAlign: "center",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    alignItems: "center",
+    width: "90%",
+    marginVertical: 32,
+    padding: 16,
     borderRadius: 12,
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    backgroundColor: "rgba(255, 255, 255, 0.2)",
   },
 });
