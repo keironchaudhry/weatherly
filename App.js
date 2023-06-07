@@ -50,14 +50,14 @@ export default function App() {
         </View>
         <View>
           <View style={styles.top}>
-            <View className="location">
-              <Text>Madrid</Text>
+            <View>
+              <Text style={styles.location}>Madrid</Text>
             </View>
-            <View className="temp">
-              <Text>25 degrees C</Text>
+            <View>
+              <Text style={styles.temperature}>25°C</Text>
             </View>
-            <View className="description">
-              <Text>Cloudy</Text>
+            <View>
+              <Text style={styles.description}>Clouds</Text>
             </View>
           </View>
           <View style={styles.bottom}>
@@ -107,7 +107,22 @@ const styles = StyleSheet.create({
   },
   top: {
     width: "100%",
-    margin: 16,
+    margin: 50,
+  },
+  location: {
+    color: "#fff",
+  },
+  temperature: {
+    color: "#fff",
+    fontWeight: "bold",
+    fontSize: 70,
+  },
+  description: {
+    color: "#fff",
+    position: "relative",
+    transformOrigin: 0,
+    transform: "rotate(270deg)",
+    left: 180,
   },
   bottom: {
     display: "flexbox",
@@ -117,7 +132,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "90%",
     marginVertical: 32,
-    marginTop: 520,
+    marginTop: 375,
     padding: 16,
     borderRadius: 12,
     backgroundColor: "rgba(255, 255, 255, 0.2)",
