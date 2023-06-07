@@ -108,8 +108,6 @@ const styles = StyleSheet.create({
   top: {
     width: "100%",
     margin: 16,
-    // marginTop: "auto",
-    // marginBottom: "auto",
   },
   bottom: {
     display: "flexbox",
@@ -119,6 +117,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "90%",
     marginVertical: 32,
+    marginTop: 520,
     padding: 16,
     borderRadius: 12,
     backgroundColor: "rgba(255, 255, 255, 0.2)",
