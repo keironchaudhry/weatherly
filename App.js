@@ -49,13 +49,29 @@ export default function App() {
           />
         </View>
         <View>
-          <View className="top">
-            <View className="location">
-              <Text>{data.name}</Text>
+          <View style={styles.top}>
+            <View>
+              <Text style={styles.location}>Madrid</Text>
             </View>
-            <View className="temp">{/* data temp */}</View>
-            <View className="description">
-              {/* data weather description */}
+            <View>
+              <Text style={styles.temperature}>25°C</Text>
+            </View>
+            <View>
+              <Text style={styles.description}>Clouds</Text>
+            </View>
+          </View>
+          <View style={styles.bottom}>
+            <View className="feels">
+              <Text style={styles.bold}>30°C</Text>
+              <Text style={styles.paragraph}>Feels like</Text>
+            </View>
+            <View className="humidity">
+              <Text style={styles.bold}>49%</Text>
+              <Text style={styles.paragraph}>Humidity</Text>
+            </View>
+            <View className="wind">
+              <Text style={styles.bold}>5 mph</Text>
+              <Text style={styles.paragraph}>Wind Speed</Text>
             </View>
           </View>
         </View>
@@ -88,5 +104,45 @@ const styles = StyleSheet.create({
     borderColor: "rgba(255, 255, 255, 0.8)",
     backgroundColor: "rgba(255, 255, 255, 0.1)",
     color: "#f8f8f8",
+  },
+  top: {
+    width: "100%",
+    margin: 50,
+  },
+  location: {
+    color: "#fff",
+  },
+  temperature: {
+    color: "#fff",
+    fontWeight: "bold",
+    fontSize: 70,
+  },
+  description: {
+    color: "#fff",
+    position: "relative",
+    transformOrigin: 0,
+    transform: "rotate(270deg)",
+    left: 180,
+  },
+  bottom: {
+    display: "flexbox",
+    textAlign: "center",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    alignItems: "center",
+    width: "90%",
+    marginVertical: 32,
+    marginTop: 375,
+    padding: 16,
+    borderRadius: 12,
+    backgroundColor: "rgba(255, 255, 255, 0.2)",
+  },
+  bold: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#fff",
+  },
+  paragraph: {
+    color: "#fff",
   },
 });
