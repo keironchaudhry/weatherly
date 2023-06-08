@@ -42,6 +42,7 @@ export default function App() {
           <TextInput
             style={styles.input}
             placeholder="Enter location"
+            placeholderTextColor={"#fff"}
             value={location}
             onChangeText={setLocation}
             onSubmitEditing={searchLocation}
@@ -111,18 +112,21 @@ const styles = StyleSheet.create({
   },
   location: {
     color: "#fff",
+    marginLeft: -40,
   },
   temperature: {
     color: "#fff",
     fontWeight: "bold",
     fontSize: 70,
+    marginLeft: -40,
   },
   description: {
     color: "#fff",
     position: "relative",
     transformOrigin: 0,
     transform: "rotate(270deg)",
-    left: 180,
+    left: 210,
+    fontSize: 20,
   },
   bottom: {
     display: "flexbox",
