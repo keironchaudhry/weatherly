@@ -42,6 +42,7 @@ export default function App() {
           <TextInput
             style={styles.input}
             placeholder="Enter location"
+            placeholderTextColor={"#fff"}
             value={location}
             onChangeText={setLocation}
             onSubmitEditing={searchLocation}
