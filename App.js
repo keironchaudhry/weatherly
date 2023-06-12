@@ -49,7 +49,7 @@ export default function App() {
             value={location}
             onChangeText={setLocation}
             onSubmitEditing={searchLocation}
-            onKeyPress={handleKeyPress}
+            onKeyDown={handleKeyPress}
           />
         </View>
         <View>
