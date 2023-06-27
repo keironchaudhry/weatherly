@@ -16,14 +16,16 @@ export default function App() {
 
   const searchLocation = (event) => {
     axios
-    .get(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=a293bc6acc6834526730bb1203942cec`)
-    .then((response) => {
-      console.log(response);
-      setData(response.data);
-    })
-    .catch((error) => {
-      alert(error.message);
-    })
+      .get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=a293bc6acc6834526730bb1203942cec`
+      )
+      .then((response) => {
+        console.log(response);
+        setData(response.data);
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
     setLocation("");
     Keyboard.dismiss();
   };
@@ -55,13 +57,19 @@ export default function App() {
         <View>
           <View style={styles.top}>
             <View>
-              <Text style={styles.location}>Madrid</Text>
+              <Text style={styles.location}>{data.name}</Text>
             </View>
             <View>
-              <Text style={styles.temperature}>25°C</Text>
+              {data.main ? (
+                <Text style={styles.temperature}>
+                  {data.main.temp.toFixed()}°C
+                </Text>
+              ) : null}
             </View>
             <View>
-              <Text style={styles.description}>Clouds</Text>
+              {data.weather ? (
+                <Text style={styles.description}>{data.weather[0].main}</Text>
+              ) : null}
             </View>
           </View>
           <View style={styles.bottom}>
