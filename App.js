@@ -74,15 +74,23 @@ export default function App() {
           </View>
           <View style={styles.bottom}>
             <View className="feels">
-              <Text style={styles.bold}>30°C</Text>
+              {data.main ? (
+                <Text style={styles.bold}>
+                  {data.main.feels_like.toFixed()}°C
+                </Text>
+              ) : null}
               <Text style={styles.paragraph}>Feels like</Text>
             </View>
             <View className="humidity">
-              <Text style={styles.bold}>49%</Text>
+              {data.main ? (
+                <Text style={styles.bold}>{data.main.humidity}%</Text>
+              ) : null}
               <Text style={styles.paragraph}>Humidity</Text>
             </View>
             <View className="wind">
-              <Text style={styles.bold}>5 mph</Text>
+              {data.wind ? (
+                <Text style={styles.bold}>{data.wind.speed.toFixed()} mph</Text>
+              ) : null}
               <Text style={styles.paragraph}>Wind Speed</Text>
             </View>
           </View>
