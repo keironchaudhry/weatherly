@@ -16,14 +16,16 @@ export default function App() {
 
   const searchLocation = (event) => {
     axios
-    .get(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=a293bc6acc6834526730bb1203942cec`)
-    .then((response) => {
-      console.log(response);
-      setData(response.data);
-    })
-    .catch((error) => {
-      alert(error.message);
-    })
+      .get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=a293bc6acc6834526730bb1203942cec`
+      )
+      .then((response) => {
+        console.log(response);
+        setData(response.data);
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
     setLocation("");
     Keyboard.dismiss();
   };
@@ -55,26 +57,40 @@ export default function App() {
         <View>
           <View style={styles.top}>
             <View>
-              <Text style={styles.location}>Madrid</Text>
+              <Text style={styles.location}>{data.name}</Text>
             </View>
             <View>
-              <Text style={styles.temperature}>25°C</Text>
+              {data.main ? (
+                <Text style={styles.temperature}>
+                  {data.main.temp.toFixed()}°C
+                </Text>
+              ) : null}
             </View>
             <View>
-              <Text style={styles.description}>Clouds</Text>
+              {data.weather ? (
+                <Text style={styles.description}>{data.weather[0].main}</Text>
+              ) : null}
             </View>
           </View>
           <View style={styles.bottom}>
             <View className="feels">
-              <Text style={styles.bold}>30°C</Text>
+              {data.main ? (
+                <Text style={styles.bold}>
+                  {data.main.feels_like.toFixed()}°C
+                </Text>
+              ) : null}
               <Text style={styles.paragraph}>Feels like</Text>
             </View>
             <View className="humidity">
-              <Text style={styles.bold}>49%</Text>
+              {data.main ? (
+                <Text style={styles.bold}>{data.main.humidity}%</Text>
+              ) : null}
               <Text style={styles.paragraph}>Humidity</Text>
             </View>
             <View className="wind">
-              <Text style={styles.bold}>5 mph</Text>
+              {data.wind ? (
+                <Text style={styles.bold}>{data.wind.speed.toFixed()} mph</Text>
+              ) : null}
               <Text style={styles.paragraph}>Wind Speed</Text>
             </View>
           </View>
