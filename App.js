@@ -10,6 +10,7 @@ import {
 
 import axios from "axios";
 import WeatherlyTop from "./components/WeatherlyTop";
+import WeatherlyBottom from "./components/WeatherlyBottom";
 
 export default function App() {
   const [data, setData] = useState({});
@@ -74,7 +75,8 @@ export default function App() {
             </View>
           </View> */}
           <WeatherlyTop data={data} />
-          <View style={styles.bottom}>
+          <WeatherlyBottom data={data} />
+          {/* <View style={styles.bottom}>
             <View className="feels">
               {data.main ? (
                 <Text style={styles.bold}>
@@ -95,7 +97,7 @@ export default function App() {
               ) : null}
               <Text style={styles.paragraph}>Wind Speed</Text>
             </View>
-          </View>
+          </View> */}
         </View>
       </View>
     </ImageBackground>
