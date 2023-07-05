@@ -9,6 +9,7 @@ import {
 } from "react-native";
 
 import axios from "axios";
+import WeatherlyTop from "./components/WeatherlyTop";
 
 export default function App() {
   const [data, setData] = useState({});
@@ -55,7 +56,7 @@ export default function App() {
           />
         </View>
         <View>
-          <View style={styles.top}>
+          {/* <View style={styles.top}>
             <View>
               <Text style={styles.location}>{data.name}</Text>
             </View>
@@ -71,7 +72,8 @@ export default function App() {
                 <Text style={styles.description}>{data.weather[0].main}</Text>
               ) : null}
             </View>
-          </View>
+          </View> */}
+          <WeatherlyTop data={data} />
           <View style={styles.bottom}>
             <View className="feels">
               {data.main ? (
