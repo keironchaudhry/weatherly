@@ -3,12 +3,13 @@ import {
   StyleSheet,
   TextInput,
   Keyboard,
-  Text,
   View,
   ImageBackground,
 } from "react-native";
 
 import axios from "axios";
+import WeatherlyTop from "./components/WeatherlyTop";
+import WeatherlyBottom from "./components/WeatherlyBottom";
 
 export default function App() {
   const [data, setData] = useState({});
@@ -55,45 +56,8 @@ export default function App() {
           />
         </View>
         <View>
-          <View style={styles.top}>
-            <View>
-              <Text style={styles.location}>{data.name}</Text>
-            </View>
-            <View>
-              {data.main ? (
-                <Text style={styles.temperature}>
-                  {data.main.temp.toFixed()}°C
-                </Text>
-              ) : null}
-            </View>
-            <View>
-              {data.weather ? (
-                <Text style={styles.description}>{data.weather[0].main}</Text>
-              ) : null}
-            </View>
-          </View>
-          <View style={styles.bottom}>
-            <View className="feels">
-              {data.main ? (
-                <Text style={styles.bold}>
-                  {data.main.feels_like.toFixed()}°C
-                </Text>
-              ) : null}
-              <Text style={styles.paragraph}>Feels like</Text>
-            </View>
-            <View className="humidity">
-              {data.main ? (
-                <Text style={styles.bold}>{data.main.humidity}%</Text>
-              ) : null}
-              <Text style={styles.paragraph}>Humidity</Text>
-            </View>
-            <View className="wind">
-              {data.wind ? (
-                <Text style={styles.bold}>{data.wind.speed.toFixed()} mph</Text>
-              ) : null}
-              <Text style={styles.paragraph}>Wind Speed</Text>
-            </View>
-          </View>
+          <WeatherlyTop data={data} />
+          <WeatherlyBottom data={data} />
         </View>
       </View>
     </ImageBackground>
@@ -124,48 +88,5 @@ const styles = StyleSheet.create({
     borderColor: "rgba(255, 255, 255, 0.8)",
     backgroundColor: "rgba(255, 255, 255, 0.1)",
     color: "#f8f8f8",
-  },
-  top: {
-    width: "100%",
-    margin: 50,
-  },
-  location: {
-    color: "#fff",
-    marginLeft: -40,
-  },
-  temperature: {
-    color: "#fff",
-    fontWeight: "bold",
-    fontSize: 70,
-    marginLeft: -40,
-  },
-  description: {
-    color: "#fff",
-    position: "relative",
-    transformOrigin: 0,
-    transform: "rotate(270deg)",
-    left: 210,
-    fontSize: 20,
-  },
-  bottom: {
-    display: "flexbox",
-    textAlign: "center",
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-    alignItems: "center",
-    width: "90%",
-    marginVertical: 32,
-    marginTop: 375,
-    padding: 16,
-    borderRadius: 12,
-    backgroundColor: "rgba(255, 255, 255, 0.2)",
-  },
-  bold: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "#fff",
-  },
-  paragraph: {
-    color: "#fff",
   },
 });
