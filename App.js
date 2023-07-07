@@ -57,7 +57,7 @@ export default function App() {
         </View>
         <View>
           <WeatherlyTop data={data} />
-          <WeatherlyBottom data={data} />
+          {data.name !== undefined && <WeatherlyBottom data={data} />}
         </View>
       </View>
     </ImageBackground>
