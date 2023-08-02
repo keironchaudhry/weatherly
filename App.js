@@ -25,7 +25,8 @@ export default function App() {
         setData(response.data);
       })
       .catch((error) => {
-        alert(error.message);
+        console.log(error);
+        alert("Location not found. Please enter a valid location.");
       });
     setLocation("");
     Keyboard.dismiss();
