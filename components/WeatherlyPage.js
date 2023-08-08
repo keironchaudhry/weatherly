@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   TextInput,
@@ -14,6 +14,19 @@ import WeatherlyBottom from "./WeatherlyBottom";
 export default function App() {
   const [data, setData] = useState({});
   const [location, setLocation] = useState("");
+  const images = [
+    require("../assets/background.jpeg"),
+    require("../assets/background-snow-2.jpeg"),
+  ];
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 20000);
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   const searchLocation = (event) => {
     axios
@@ -40,7 +53,7 @@ export default function App() {
 
   return (
     <ImageBackground
-      source={require("../assets/background.jpeg")}
+      source={images[currentImageIndex]}
       style={styles.backgroundImage}
     >
       <View style={styles.container}>
