@@ -5,7 +5,6 @@ import {
   Keyboard,
   View,
   ImageBackground,
-  Animated,
 } from "react-native";
 
 import axios from "axios";
@@ -20,25 +19,14 @@ export default function App() {
     require("../assets/background-snow-2.jpeg"),
   ];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const opacity = new Animated.Value(0);
-
-  useEffect(() => {
-    Animated.timing(opacity, {
-      toValue: 1,
-      duration: 1000, // Adjust the duration as needed
-      useNativeDriver: false, // Set to false for opacity animation
-    }).start();
-  }, [currentImageIndex]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-      opacity.setValue(0);
     }, 20000);
 
     return () => {
       clearInterval(intervalId);
-      opacity.setValue(0);
     };
   }, []);
 
@@ -66,31 +54,29 @@ export default function App() {
   };
 
   return (
-    <Animated.View>
-      <ImageBackground
-        source={images[currentImageIndex]}
-        style={[styles.backgroundImage, { opacity }]}
-      >
-        <View style={styles.container}>
-          {/* Search Filter */}
-          <View style={styles.search}>
-            <TextInput
-              style={styles.input}
-              placeholder="Enter location"
-              placeholderTextColor={"#fff"}
-              value={location}
-              onChangeText={setLocation}
-              onSubmitEditing={searchLocation}
-              onKeyDown={handleKeyPress}
-            />
-          </View>
-          <View>
-            <WeatherlyTop data={data} />
-            {data.name !== undefined && <WeatherlyBottom data={data} />}
-          </View>
+    <ImageBackground
+      source={images[currentImageIndex]}
+      style={styles.backgroundImage}
+    >
+      <View style={styles.container}>
+        {/* Search Filter */}
+        <View style={styles.search}>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter location"
+            placeholderTextColor={"#fff"}
+            value={location}
+            onChangeText={setLocation}
+            onSubmitEditing={searchLocation}
+            onKeyDown={handleKeyPress}
+          />
         </View>
-      </ImageBackground>
-    </Animated.View>
+        <View>
+          <WeatherlyTop data={data} />
+          {data.name !== undefined && <WeatherlyBottom data={data} />}
+        </View>
+      </View>
+    </ImageBackground>
   );
 }
 
